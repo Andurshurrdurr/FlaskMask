@@ -1,0 +1,6 @@
+---
+# File for general handlers
+- name: docker-compose up
+  shell: docker-compose up
+  args:
+    chdir: /home/andurs/app/

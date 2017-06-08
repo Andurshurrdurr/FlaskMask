@@ -1,0 +1,52 @@
+---
+# This playbook installs docker, docker-compose and their dependencies, aswell
+# as sudo and git
+- name: Apt | Install apt dependencies for Docker
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+
+- name: Apt | Install sudo and git
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+  with_items:
+    - sudo
+    - git
+
+- name: Apt | Import the Docker repository key
+  apt_key:
+    id: 0EBFCD88
+    url: https://download.docker.com/linux/debian/gpg
+    state: present
+
+- name: Apt | Add docker.io debian apt repository
+  apt_repository:
+    repo: deb https://download.docker.com/linux/debian/ jessie stable
+    state: present
+
+- name: Apt | update
+  apt:
+    update-cache: yes
+
+- name: Apt | Make sure docker and its dependencies are installed
+  apt:
+    pkg: "{{ item }}"
+    state: present
+  with_items:
+    - docker-ce
+
+- name: Get-url | Get release version 1.12.0-rc2 of docker-compose
+  get_url:
+    url: https://github.com/docker/compose/releases/download/1.12.0-rc2/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: 0540
+
+- name: Apt | update
+  apt:
+    update-cache: yes

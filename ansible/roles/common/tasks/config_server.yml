@@ -1,0 +1,26 @@
+---
+- name: Users | Adding sudo Users
+  user:
+    name: andurs
+    comment: "sudo user"
+    group: sudo
+- name: SSH Key | Placing public key from local machine for ssh access
+  authorized_key:
+    user: andurs
+    state: present
+    key: "{{ lookup('file', '/Users/anders/.ssh/id_rsa.pub') }}"
+- name: Sudo shell | Set sudo password
+  shell: echo andurs:iamsudorootpoi | sudo chpasswd
+  no_log: True
+- name: SSH Config | Configure ssh to reject root login
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: '^PermitRootLogin'
+    line: 'PermitRootLogin no'
+  notify: Restart ssh
+- name: SSH Config | Configure ssh to reject pw login
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: '^PasswordAuthentication'
+    line: 'PasswordAuthentication yes'
+  notify: Restart ssh
