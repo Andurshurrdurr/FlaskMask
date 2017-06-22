@@ -4,4 +4,4 @@ LABEL description="Deploys a flask webserver. See <serveraddress>:80/"
 RUN pip install -U pip
 RUN pip install flask packaging oauth2client redis passlib flask-httpauth
 RUN pip install sqlalchemy flask-sqlalchemy psycopg2 bleach
-COPY ../app /app
+COPY ./app /app

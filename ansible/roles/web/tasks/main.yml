@@ -3,21 +3,28 @@
 - name: Apt | update
   apt:
     update-cache: yes
-- name: Copy | Private key for git repository
+
+- name: Copy | App and docker directories
   copy:
-    src: id_rsa
-    dest: /home/andurs/.ssh/id_rsa
-    mode: 0600
-- name: Git | Clone git repository
-  git:
-    repo: https://github.com/Andurshurrdurr/FlaskMask.git
-    dest: /home/andurs/app/
-#    accept_hostkey: yes
-#    force: yes
-#    recursive: no
-#    key_file: /home/andurs/.ssh/id_rsa
-- name: Shell | Run docker-compose
-  shell: docker-compose build
-  args:
-    chdir: /home/andurs/app/docker/
-  notify: docker-compose up
+    src: app/app
+    dest: /home/andurs/app
+    mode: 0640
+    
+# - name: Copy | Private key for git repository
+#   copy:
+#     src: id_rsa
+#     dest: /home/andurs/.ssh/id_rsa
+#     mode: 0600
+# - name: Git | Clone git repository
+#   git:
+#     repo: https://github.com/Andurshurrdurr/FlaskMask.git
+#     dest: /home/andurs/app/
+# #    accept_hostkey: yes
+# #    force: yes
+# #    recursive: no
+# #    key_file: /home/andurs/.ssh/id_rsa
+# - name: Shell | Run docker-compose
+#   shell: docker-compose build
+#   args:
+#     chdir: /home/andurs/app/docker/
+#   notify: docker-compose up
