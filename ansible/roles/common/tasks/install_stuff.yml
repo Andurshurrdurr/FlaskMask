@@ -1,6 +1,6 @@
 ---
 # This playbook installs docker, docker-compose and their dependencies, aswell
-# as sudo and git
+# as sudo and git- These are just tasks
 - name: Apt | Install apt dependencies for Docker
   apt:
     pkg: "{{ item }}"

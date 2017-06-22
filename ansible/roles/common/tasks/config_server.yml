@@ -8,7 +8,7 @@
   authorized_key:
     user: andurs
     state: present
-    key: "{{ lookup('file', '/Users/anders/.ssh/id_rsa.pub') }}"
+    key: "{{ lookup('file', '/home/anserio/.ssh/id_rsa.pub') }}" # SET CORRECT KEY HERE
 - name: Sudo shell | Set sudo password
   shell: echo andurs:iamsudorootpoi | sudo chpasswd
   no_log: True
@@ -17,10 +17,10 @@
     dest: /etc/ssh/sshd_config
     regexp: '^PermitRootLogin'
     line: 'PermitRootLogin no'
-  notify: Restart ssh
+  notify: restart ssh
 - name: SSH Config | Configure ssh to reject pw login
   lineinfile:
     dest: /etc/ssh/sshd_config
     regexp: '^PasswordAuthentication'
     line: 'PasswordAuthentication yes'
-  notify: Restart ssh
+  notify: restart ssh
