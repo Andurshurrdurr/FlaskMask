@@ -8,12 +8,20 @@ services:
       - "80:80"
     links:
       - db
-  udp:
+  # udp:
+  #   build:
+  #     context: ../
+  #     dockerfile: docker/Dockerfile-udp
+  #   ports:
+  #     - "16666/udp:16666/udp"
+  #   links:
+  #     - db
+  mqtt:
     build:
       context: ../
-      dockerfile: docker/Dockerfile-udp
+      dockerfile: docker/Dockerfile-mqtt
     ports:
-      - "16666/udp:16666/udp"
+      - "1883:1883"
     links:
       - db
   db:
