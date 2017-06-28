@@ -1,29 +1,24 @@
-"""Contains the classes for the database models"""
+import datetime
 
-from sqlalchemy import Column, ForeignKey, Integer, String, Date, Numeric
+from sqlalchemy import Column, ForeignKey, Integer, String, DateTime, Numeric
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 
 Base = declarative_base()
 
-class Sampleclass(Base):
-    __tablename__ = 'Place'
+class Reading(Base):
+    __tablename__ = 'values'
     id = Column(Integer, primary_key = True)
-    name =Column(String(80), nullable = False)
-    address = Column(String(250))
-    city = Column(String(80))
-    state = Column(String(20))
-    zipCode = Column(String(10))
-    user_id = Column(Integer, ForeignKey('users.id'))
+    dev_id = Column(String(16), ForeignKey('devices.dev_id'))
+    value = Column(Integer)
+    date = Column(DateTime, default=datetime.datetime.utcnow)
 
-    @property
-    def serialize(self):
-        """Return object data in easily serializeable format"""
-        return {
-            'name': self.name,
-            'id': self.id,
-        }
+class Devices(Base):
+    __tablename__ = 'devices'
+    dev_id = Column(String(16), primary_key = True)
+    description = Column(String(20))
+    user_id = Column(Integer, ForeignKey('users.id'))
 
 class Users(Base):
     __tablename__ = 'users'
@@ -32,6 +27,6 @@ class Users(Base):
     email = Column(String(80), nullable = False)
     picture = Column(String(250))
 
-engine = create_engine('sqlite:///restaurantmenuwithusers.db')
+engine = create_engine('mysql+mysqldb://root:example@172.104.135.67:3306/sensario')
 
 Base.metadata.create_all(engine)

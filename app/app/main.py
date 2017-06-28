@@ -1,3 +1,6 @@
 from app import app
 app.debug = True
-app.run(host='0.0.0.0', port = 80)
+
+if __name__ == "__main__":
+    print "Running webserver!"
+    app.run(host='0.0.0.0', port = 8085)

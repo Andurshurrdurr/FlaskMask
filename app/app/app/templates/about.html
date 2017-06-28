@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sensario smarthome WebApp</title>
+	<title>Restaurants webapp</title>
 	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/landing.css') }}">
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -17,33 +17,28 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
 </head>
 <body>
-	<div class="container">
-    <div class="introduction">
-      <script>
-            $(document).ready(function(){
-              var cont = $(".container");
-              cont.css("margin", 0);
-              cont.css("padding", 0)
-            });
-      </script>
 
-      <div class="landing-wrapper">
-        <div class="landing-inner">
-          <h2 class="heading">Your Smarthome</h2>
-          <div>
-            <img src="static/img/index.svg" class="img-responsive" alt="logo" style="padding-bottom:40px">
+	<div class='introduction'>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-0 col-md-2"></div>
+        <div class="col-xs-12 col-md-8 page">
+					<div class="row">
+						<div class="col-xs-0 col-md-2 "></div>
+						<div class="col-xs-12 col-md-8">
+							<h1>About the project</h1>
+		          <p>Lorem ipsum</p>
+		          <img class="img-responsive"
+		          src="{{ url_for('static', filename='img/codereview.jpg') }}"
+		          alt="codereview lolcat">
+		          <p>purr purr..</p>
+							<a class="btn btn-block btn-primary" href="/">Back</a> <br>
+						</div>
+						<div class="col-xs-0 col-md-2 "></div>
           </div>
-					<!-- Check if user is logged in and show appropriate stuff -->
-					{% if 'username' in session %}
-						<a class="btn btn-block btn-primary" href="{{ url_for('site.dashboard') }}">Your home</a> <br>
-					{% else %}
-          	<a class="btn btn-block btn-primary" href="/login">Sign in</a> <br>
-					{% endif %}
-          <a class="btn btn-block btn-primary" href="/about">About</a> <br>
-          <a class="btn btn-block btn-primary" href="/contact">Contact</a> <br>
         </div>
+        <div class="col-xs-0 col-md-2"></div>
       </div>
-
     </div>
   </div>
 
@@ -55,7 +50,7 @@
   		      <a href="#">Terms of Service</a> | <a href="#">Privacy</a>
   		    </div>
   		   	<div class="col-xs-12 col-md-6">
-  		     	<p class="muted pull-right">© 2017 Sensario. All rights reserved</p>
+  		     	<p class="muted pull-right">© 2017 Anders L. Hurum. All rights reserved</p>
   		    </div>
   	    </div>
   	  </div>

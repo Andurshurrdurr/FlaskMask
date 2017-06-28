@@ -6,3 +6,20 @@ services:
       dockerfile: docker/Dockerfile-web
     ports:
       - "80:80"
+    links:
+      - db
+  udp:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile-udp
+    ports:
+      - "16666/udp:16666/udp"
+    links:
+      - db
+  db:
+    image: mysql
+    environment: # mysql+mysqlconnector://<user>:<password>@<host>[:<port>]/<dbname>
+      - MYSQL_ROOT_PASSWORD=example
+      - MYSQL_DATABASE=sensario
+    ports:
+      - "3306:3306"

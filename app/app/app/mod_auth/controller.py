@@ -21,7 +21,7 @@ mod = Blueprint('auth', __name__)
 
 CLIENT_ID = json.loads(
     open('client_secrets.json', 'r').read())['web']['client_id']
-APPLICATION_NAME = "Restaurant Menu Application"
+APPLICATION_NAME = "Sensario smarthome application"
 
 # Login ------------------------------------------------------------------------
 
@@ -33,21 +33,24 @@ def login():
                     for i in xrange(32))
     login_session['state'] = state
     # Next we return it for debugging purposes
-    return render_template('login-oauth.html', STATE=state)
+    return render_template('login.html', STATE=state)
 
 # OAuth2 Connect ---------------------------------------------------------------
 
 @mod.route('/gconnect', methods=['POST'])
 def gconnect():
     """Handles the data sent by the google signin ajax"""
+    print "got gconnect request!"
      # First validate state token to protect from CSRF
     if request.args.get('state') != login_session['state']:
         response = make_response(json.dumps('Invalid state parameter.'), 401)
         response.headers['Content-Type'] = 'application/json'
         return response
+    print "State ok!"
 
     # Next we get the auth code in the request
     code = request.data
+    print "auth code is " + str(code)
 
     # Then we upgrade the code into the cridentials object
     try:
@@ -60,6 +63,7 @@ def gconnect():
         response.headers['Content-Type'] = 'application/json'
         return response
 
+    print "cridentials obj attained"
     # Next we check the validity of the token
     access_token = credentials.access_token
     url = ('https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=%s'
@@ -114,6 +118,7 @@ def gconnect():
     login_session['email'] = data['email']
 
     user_id = getUserID(login_session['email'])
+    print "USER ID IS: " + str(user_id)
     if  user_id == None:
         # User is not in db -> Create user and return user_id
         user_id = createUser(login_session)
@@ -247,7 +252,7 @@ def disconnect():
         del login_session['provider']
         print "Successfully logged out ------------------------------------- !!"
         flash("You have successfully logged out!")
-        return redirect(url_for('site.Listrestaurants'))
+        return redirect(url_for('site.index'))
     else:
         flash("You werent even logged in")
         return redirect(url_for('auth.login'))

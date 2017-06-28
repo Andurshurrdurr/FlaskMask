@@ -1,6 +1,7 @@
 # Statement for enabling the development environment
 DEBUG = True
 # SERVER_NAME = 'example.com:5000'
+SECRET_KEY = 'my_secret_key'
 
 # Define the application directory
 import os
