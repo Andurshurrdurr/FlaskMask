@@ -1,4 +1,4 @@
-
+"""Controller for Oauth2 login with facebook and google"""
 # Imports for flask
 from flask import Blueprint, render_template, url_for, flash, request, redirect
 

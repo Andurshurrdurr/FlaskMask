@@ -1,3 +1,4 @@
+Personal notes on the script:
 * Common:
   1. Login as root user using password
   2. Install sudo, docker, git, add key for docker, install docker-compose
@@ -8,6 +9,7 @@
     - Change ssh config to reject root login and password login
 
 * Web:
-  1. prompts for pass and logs in as andurs user
+  1. prompts for sudo pass and logs in as andurs user
   2. Runs apt-get update
   3. Copies over the application and dockerfiles in the parent directory (app and docker dirs)
+  4. For now admin has to log in to the server and run the application

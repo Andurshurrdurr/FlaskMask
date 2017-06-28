@@ -1,3 +1,5 @@
+"""Controller for the api/ endpoint, test with api/getstuff"""
+
 from flask import Blueprint
 
 mod = Blueprint('api', __name__)
@@ -6,15 +8,14 @@ mod = Blueprint('api', __name__)
 def getstuff():
     return '{"result" : "You are accessing the api"}'
 
-# EXAMPLE GET JSON DATA
 
-@mod.route('/resturant/<int:resturant_id>/menu/json')
-@mod.route('/resturant/<int:resturant_id>/menu/<int:menuitem_id>/json')
-def getjsondata(resturant_id=False, menuitem_id=False):
+@mod.route('/device/<int:device_id>/data')
+@mod.route('/registry/<int:reg_id>/data/<int:device_id>')
+def getjsondata(device_id=False, reg_id=False):
     print "got json request!"
-    if menuitem_id == False:
-        jsonfied = listmenujson(resturant_id)
+    if device_id == False:
+        jsonfied = listmenujson(reg_id)
         return jsonfied
     else:
-        jsonfied = getitemjson(resturant_id, menuitem_id)
+        jsonfied = getitemjson(reg_id, device_id)
         return jsonfied
