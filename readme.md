@@ -1,4 +1,4 @@
-# FlaskMask
+![FlaskMask logo](/xFlaskMask.png)
 
 This repository contains boilerplate code for quickly setting up and deploying a containerized flask webapplication. This repo will be purposefully designed for lean dev, experimentation and hackathons.
 
