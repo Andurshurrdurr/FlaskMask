@@ -12,7 +12,7 @@ then
   find ../app/ -name "*.pyc" -type f -delete
   echo "-- OK --"
   echo "Deploying app!"
-  ansible-playbook deploy.yml -i hosts -K
+  ansible-playbook deploy.yml -i hosts
 else
   echo "Please a valid command."
 fi

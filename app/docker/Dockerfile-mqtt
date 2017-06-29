@@ -7,5 +7,5 @@ RUN pip install -U pip
 RUN pip install mysql-python
 RUN pip install sqlalchemy
 RUN pip install paho-mqtt
-COPY ../MQTT /MQTT
+COPY ./MQTT /MQTT
 CMD python -u /MQTT/main.py

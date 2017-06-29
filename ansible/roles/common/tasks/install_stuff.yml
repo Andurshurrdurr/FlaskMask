@@ -18,6 +18,7 @@
   with_items:
     - sudo
     - git
+    - rsync
 
 - name: Apt | Import the Docker repository key
   apt_key:
