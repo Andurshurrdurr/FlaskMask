@@ -17,6 +17,6 @@ class Devices(Base):
     id = Column(String(16), primary_key = True)
     sensor_type = Column(String(16))
 
-engine = create_engine('mysql+mysqldb://root:example@db:3306/sensario')
+engine = create_engine('sqlite:///mqtt_test.db')
 
 Base.metadata.create_all(engine)

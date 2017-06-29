@@ -3,8 +3,10 @@ from sqlalchemy import create_engine #, *func* to aggregate
 from sqlalchemy.orm import sessionmaker
 
 def makesession(Base):
-    #Initiate the engine obj mysql+mysqlconnector://<user>:<password>@<host>[:<port>]/<dbname>
-    engine = create_engine('mysql+mysqldb://root:example@db:3306/sensario')
+    # SQLite: sqlite:///dbname.db
+    # mysqlconnector: mysql+mysqlconnector://<user>:<password>@<host>[:<port>]/<dbname>
+    # Current mysql+mysqldb://root:example@db:3306/sensario
+    engine = create_engine('sqlite:///mqtt_test.db')
     # Bind engine and the base obj
     Base.metadata.bind = engine
     # Init the session

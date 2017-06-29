@@ -1,9 +1,4 @@
 ---
-# file: site.yml
-# Runs the other playbooks in the directory
-# put correct host in hosts run ansible-playbook *this file* to deploy app
-# BEFORE RUNNING: Check the SSH key in common roles, Run with arguments:
-# --ask-become-pass or -K
 - name: Ansible | Apply common configurations to all nodes
   hosts: webservers
   remote_user: andurs
