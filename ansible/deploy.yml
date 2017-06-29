@@ -1,10 +1,10 @@
 - name: Ansible | Clone and run webapplication on webservers
   hosts: webservers
   remote_user: andurs
-  # vars_prompt:
-  #   - name: "ansible_become_pass" # config=andurs:iamsudorootpoi
-  #     passphrase: "Please enter the sudo passphrase for web deployment user"
-  #     private: yes
+  #vars_prompt:
+  #  - name: "ansible_become_pass" # config=andurs:iamsudorootpoi
+  #    passphrase: "Please enter the sudo passphrase for web deployment user"
+  #    private: yes
   become: yes
   roles:
     - web
