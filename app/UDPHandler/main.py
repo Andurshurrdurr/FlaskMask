@@ -55,5 +55,5 @@ while True:
         try:
             if validatedevice(address):
                 data = parsedata(message)
-                create_reading(data["device_id"], data["value"])
+                create_reading(data["dev_id"], data["value"])
         except Exception as e:
