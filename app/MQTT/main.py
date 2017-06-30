@@ -1,22 +1,25 @@
 import paho.mqtt.client as mqtt
 import json
+from time import sleep
 
+sleep(4)
 
-import seed # importing this module seeds the devices table with 1 device
+#import seed # importing this module seeds the devices table with 1 device
 from model.model_devices import create_reading
-
 
 
 def parsedata(data):
     """This funcion parses the data for inserting to the database"""
     try:
+        print "data to be parsed is: " + str(data)
         # First we get device id
-        j = json.loads(data)
+        j = json.loads(u"%s" % data) # unicode
         for v in j:
             print v
+        print j
         # Next we get the values
-        dev_id = j["dev_id"]
-        val = j["val"]
+        dev_id = str(j["dev_id"])
+        val = str(j["val"])
         # And we parse the data into a dictionary
         datadict = {"dev_id": dev_id, "value": val}
         # We return a dictionary of the data

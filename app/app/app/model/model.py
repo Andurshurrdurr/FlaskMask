@@ -12,7 +12,7 @@ class Reading(Base):
     id = Column(Integer, primary_key = True)
     dev_id = Column(String(16), ForeignKey('devices.dev_id'))
     value = Column(Integer)
-    date = Column(DateTime, default=datetime.datetime.utcnow)
+    date = Column(DateTime, default=datetime.datetime.utcnow())
 
 class Devices(Base):
     __tablename__ = 'devices'

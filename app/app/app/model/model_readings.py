@@ -17,7 +17,7 @@ def read_readings(device_id):
         count += 1
         v = int(i.value)
         strlist.append(v)
-        if count > 50:
+        if count > 10:
             print strlist
             print "returning list of values"
             return str(strlist)

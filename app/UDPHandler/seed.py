@@ -12,7 +12,7 @@ Device1 = Devices(
                 id="12345",
                 sensor_type="testingsensor"
 )
-session.add(User1)
+session.add(Device1)
 session.commit()
 
 print "added dummy device"
