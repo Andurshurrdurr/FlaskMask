@@ -1,15 +1,15 @@
 ---
 # tasks for webservers to run git clone on repo and run application
-- name: Apt | update
-  apt:
-    update-cache: yes
+#- name: Apt | Update
+#  apt:
+#    update-cache: yes
 
-- name: Copy | App and docker directories
-  copy:
+- name: Synchronize | App and docker directories
+  synchronize:
     src: app/app
-    dest: /home/andurs/app
-    mode: 0640
-    
+    dest: /home/andurs
+
+# --- This is a hack ---
 # - name: Copy | Private key for git repository
 #   copy:
 #     src: id_rsa
@@ -23,8 +23,9 @@
 # #    force: yes
 # #    recursive: no
 # #    key_file: /home/andurs/.ssh/id_rsa
-# - name: Shell | Run docker-compose
-#   shell: docker-compose build
-#   args:
-#     chdir: /home/andurs/app/docker/
-#   notify: docker-compose up
+
+- name: Shell | Run docker-compose
+  shell: docker-compose build
+  args:
+    chdir: /home/andurs/app/docker
+  notify: docker-compose up

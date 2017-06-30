@@ -3,7 +3,8 @@
   user:
     name: andurs
     comment: "sudo user"
-    group: sudo
+    groups: sudo, docker
+    append: yes
 - name: SSH Key | Placing public key from local machine for ssh access
   authorized_key:
     user: andurs

@@ -35,6 +35,7 @@ def on_connect(client, userdata, flags, rc):
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
+    print "Python program detected a mqtt message!"
     print msg.topic+" "+str(msg.payload)
     # Check valid json - add SQL insert here
     data = parsedata(msg.payload)
@@ -51,7 +52,7 @@ client.on_connect = on_connect
 client.on_message = on_message
 
 # Client connects to host on port, with timeout
-client.connect("localhost")
+client.connect("localhost", 1883, 60)
 
 # Blocking call that processes network traffic, dispatches callbacks and
 # handles reconnecting.
