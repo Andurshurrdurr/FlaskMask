@@ -2,7 +2,9 @@ import paho.mqtt.client as mqtt
 import json
 
 
+import seed # importing this module seeds the devices table with 1 device
 from model.model_devices import create_reading
+
 
 
 def parsedata(data):
@@ -13,8 +15,8 @@ def parsedata(data):
         for v in j:
             print v
         # Next we get the values
-        dev_id = j["id"]
-        val = j["v"]
+        dev_id = j["dev_id"]
+        val = j["val"]
         # And we parse the data into a dictionary
         datadict = {"dev_id": dev_id, "value": val}
         # We return a dictionary of the data
@@ -27,7 +29,6 @@ def parsedata(data):
 def on_connect(client, userdata, flags, rc):
     # The callback for when the client receives a CONNACK response from the server.
     print "Connected with result code "+str(rc)
-
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
     client.subscribe("Topic1")
@@ -43,8 +44,6 @@ def on_message(client, userdata, msg):
         create_reading(data["dev_id"], data["value"])
     else:
         print "invalid data"
-        # Implement mqtt response Here
-        return
 
 
 client = mqtt.Client()
@@ -52,7 +51,7 @@ client.on_connect = on_connect
 client.on_message = on_message
 
 # Client connects to host on port, with timeout
-client.connect("localhost")
+client.connect("localhost", 1883, 60)
 
 # Blocking call that processes network traffic, dispatches callbacks and
 # handles reconnecting.
