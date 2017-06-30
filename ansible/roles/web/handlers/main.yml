@@ -3,4 +3,4 @@
 - name: docker-compose up
   shell: docker-compose up
   args:
-    chdir: /home/andurs/app/
+    chdir: /home/andurs/app/docker

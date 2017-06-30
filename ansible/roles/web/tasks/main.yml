@@ -7,9 +7,9 @@
 - name: Synchronize | App and docker directories
   synchronize:
     src: app/app
-    dest: /home/andurs/app
+    dest: /home/andurs
 
-# --- This is a hack ---    
+# --- This is a hack ---
 # - name: Copy | Private key for git repository
 #   copy:
 #     src: id_rsa
@@ -24,8 +24,8 @@
 # #    recursive: no
 # #    key_file: /home/andurs/.ssh/id_rsa
 
-# - name: Shell | Run docker-compose
-#   shell: docker-compose build
-#   args:
-#     chdir: /home/andurs/app/docker/
-#   notify: docker-compose up
+- name: Shell | Run docker-compose
+  shell: docker-compose build
+  args:
+    chdir: /home/andurs/app/docker
+  notify: docker-compose up

@@ -20,7 +20,7 @@ client.on_connect = on_connect
 client.on_message = on_message
 
 # Client connects to host on port, with timeout
-client.connect("localhost")
+client.connect("localhost", 1883, 60)
 
 # Blocking call that processes network traffic, dispatches callbacks and
 # handles reconnecting.
