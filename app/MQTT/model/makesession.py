@@ -6,7 +6,7 @@ def makesession(Base):
     # SQLite: sqlite:///dbname.db
     # mysqlconnector: mysql+mysqlconnector://<user>:<password>@<host>[:<port>]/<dbname>
     # Current mysql+mysqldb://root:example@db:3306/sensario
-    engine = create_engine('sqlite:///mqtt_test.db')
+    engine = create_engine('mysql+mysqldb://root:example@db:3306/sensario')
     # Bind engine and the base obj
     Base.metadata.bind = engine
     # Init the session

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, Date, Numeric
+from sqlalchemy import Column, ForeignKey, Integer, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
@@ -16,7 +16,8 @@ class Devices(Base):
     __tablename__ = 'devices'
     id = Column(String(16), primary_key = True)
     sensor_type = Column(String(16))
+# To use sqlite: sqlite:///mqtt_test.db
 
-engine = create_engine('sqlite:///mqtt_test.db')
+engine = create_engine('mysql+mysqldb://root:example@db:3306/sensario')
 
 Base.metadata.create_all(engine)

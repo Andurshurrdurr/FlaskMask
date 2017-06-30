@@ -30,7 +30,7 @@ def dashboard():
 
 @mod.route('/dbtest')
 def dbtest():
-    rlist = read_readings("temperature")
+    rlist = read_readings("1")
     print "rlist returned is: "
     print rlist
     return rlist

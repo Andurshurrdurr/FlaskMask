@@ -2,7 +2,9 @@ import paho.mqtt.client as mqtt
 import json
 
 
+import seed # importing this module seeds the devices table with 1 device
 from model.model_devices import create_reading
+
 
 
 def parsedata(data):
