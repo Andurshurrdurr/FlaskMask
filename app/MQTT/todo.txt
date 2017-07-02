@@ -1,2 +1,0 @@
-This folder is for MQTT. It isnt yet implemented (est. this week)
-See MQTT branch.

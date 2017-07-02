@@ -1,40 +1,9 @@
 ![FlaskMask logo](/FlaskMask.png)
 
-This repository contains boilerplate code for quickly setting up and deploying a containerized flask webapplication. This repo will be purposefully designed for lean dev, experimentation and hackathons.
+This branch features a simple ansible deployment script. clone this repository and add a app folder next to the ansible folder. Running the ansible script will automatically copy the app folder to the server and run the docker-compose file inside app/docker on the server. A quick way to build a MVP.
 
 ## Getting started
 Here you find instructions getting a devenvironment or autodeploying to server using ansible.
-
-### Development environment
-#### Using vagrant:
-[This is still experimental and not tested]
-
-##### Requirements
-- Virtualbox
-- Vagrant
-
-##### Instructions
-1. Move to the app directory
-2. Run vagrant ´vagrant up´
-3. SSH into vagrant vm ´vagrant ssh´
-4. Once in you will find the synced folder at ´cd /vagrant´
-5. Run the application ´python main.py´
-
-#### Using virtualenv
-[Also quite experimental]
-
-##### Requirements
-- python
-- virutalenv
-- pip
-
-##### Instructions
-1. Move terminal to app directory ´cd app/app´
-2. Create a virtual environment ´virtualenv venv´
-3. Initiailize a virtualenv session ´source venv/bin/activate´
-4. Install the requirements ´pip install -r requirements.txt´
-5. There might be some packages which must be installed globally using sudo - pip should tell you
-6. Run the app ´python main.py´
 
 ### Deploying to server
 #### Requirements
@@ -44,16 +13,9 @@ Here you find instructions getting a devenvironment or autodeploying to server u
 #### Instructions
 1. Put the right host in the inventory file located in ´ansible/hosts´
 2. Make sure you generate RSA keys for ssh ´ssh-keygen -t rsa -b 4096´
-3. Run the server configurations in ansible folder ´run.sh config´
+3. Run the initial server configurations in ansible folder ´run.sh initconfig´ - this will add sudo user, rsa keys and harden the server
 4. Deploy the app to the server ´run.sh deploy´
-5. For now you need to log into the server and run docker-compose up
-
-## Features
-- Ansible playbook autodeploy
-- Docker for containerization, docker-compose for orchestration
-- Python and flask
-- MySQL RDB
-- Containers which handle node communication using different protocols
+5. If you need to run additional configs as sudo user use `run.sh config`
 
 ## LICENSE
 MIT LICENSE

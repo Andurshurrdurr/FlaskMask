@@ -1,2 +1,0 @@
-This folder is for CoAP. It isnt yet implemented (est. late summer)
-See CoAP branch.
