@@ -11,7 +11,7 @@
     - curl
     - software-properties-common
 
-- name: Apt | Install sudo and git
+- name: Apt | Install sudo, git ans zsh
   apt:
     pkg: "{{ item }}"
     state: latest
@@ -19,6 +19,7 @@
     - sudo
     - git
     - rsync
+    - zsh
 
 - name: Apt | Import the Docker repository key
   apt_key:

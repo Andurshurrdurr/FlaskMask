@@ -5,23 +5,31 @@
     comment: "sudo user"
     groups: sudo, docker
     append: yes
+
 - name: SSH Key | Placing public key from local machine for ssh access
   authorized_key:
     user: andurs
     state: present
     key: "{{ lookup('file', '/home/anserio/.ssh/id_rsa.pub') }}" # SET CORRECT KEY HERE
+
 - name: Sudo shell | Set sudo password
   shell: echo andurs:iamsudorootpoi | sudo chpasswd
   no_log: True
+
 - name: SSH Config | Configure ssh to reject root login
   lineinfile:
     dest: /etc/ssh/sshd_config
     regexp: '^PermitRootLogin'
     line: 'PermitRootLogin no'
   notify: restart ssh
+
 - name: SSH Config | Configure ssh to reject pw login
   lineinfile:
     dest: /etc/ssh/sshd_config
     regexp: '^PasswordAuthentication'
     line: 'PasswordAuthentication yes'
   notify: restart ssh
+
+- name: Shell | Set default shell to zsh
+  shell: chsh -s /bin/zsh
+  remote_user: andurs
