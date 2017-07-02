@@ -1,4 +1,4 @@
-![FlaskMask logo](/FlaskMask.png)
+![FlaskMask logo](http://terraltech.com/wp-content/uploads/2017/04/ANSIBLE.jpg?x14005)
 
 This branch features a simple ansible deployment script. clone this repository and add a app folder next to the ansible folder. Running the ansible script will automatically copy the app folder to the server and run the docker-compose file inside app/docker on the server. A quick way to build a MVP.
 

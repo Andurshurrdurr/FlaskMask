@@ -18,5 +18,5 @@ then
   echo "Deploying app!"
   ansible-playbook deploy.yml -i hosts
 else
-  echo "Please a valid command."
+  echo "Please enter a valid command."
 fi
