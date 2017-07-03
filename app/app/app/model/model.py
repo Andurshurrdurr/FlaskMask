@@ -27,6 +27,6 @@ class Users(Base):
     email = Column(String(80), nullable = False)
     picture = Column(String(250))
 
-engine = create_engine('mysql+mysqldb://root:example@db:3306/sensario')
+engine = create_engine('mysql+mysqldb://root:example@172.104.153.107:3306/sensario')
 
 Base.metadata.create_all(engine)

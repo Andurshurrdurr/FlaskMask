@@ -16,17 +16,11 @@ print "Running site controller.."
 
 @mod.route('/dashboard')
 def dashboard():
-    print "user logged in with user id: "
-    print login_session['user_id']
-    temp = read_readings("temp")
-    print "temp is" + temp
-    pressure = read_readings("pressure")
-    humidity = read_readings("humidity")
-    co2 = read_readings("co2")
-    return render_template('private/dashboard.html', temperature=temp,
-                                                     pressure=pressure,
-                                                     humidity=humidity,
-                                                     co2=co2)
+    # print "user logged in with user id: "
+    # print login_session['user_id']
+    distance = read_readings("1")
+    print "distance is" + distance
+    return render_template('private/dashboard.html', distance=distance)
 
 @mod.route('/dbtest')
 def dbtest():

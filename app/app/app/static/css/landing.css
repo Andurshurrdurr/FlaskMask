@@ -1,0 +1,64 @@
+@media (min-width: 900px) {
+  .introduction {
+    /*height: 100vh;
+    width: 100vw;*/
+    background: url(../img/landing.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: absolute;
+    width:100vw;
+    min-height:100vh;
+  }
+
+  .landing-wrapper{
+    position: relative;
+    padding-top: 20vh;
+    padding-bottom: auto;
+    min-height: 100vh;
+    height:100%;
+  }
+
+  .landing-inner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 35px 45px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 3px solid rgba(0,0,0,0.1);
+    border-radius: 3px;
+  }
+}
+
+@media (max-width: 900px) {
+  .introduction{
+    height: 100%;
+    width:100%;
+    min-width:100vw;
+  }
+  .landing-wrapper{
+    padding:5px;
+  }
+  .landing-inner{
+    max-width: 380px;
+    margin: 0 auto;
+  }
+}
+
+body{
+  max-height: 100vh;
+}
+
+.heading {
+  text-align: center;
+}
+
+.page {
+  border: 3px solid rgba(0,0,0,0.1);
+  background-color: #fff;
+  margin: 20px 0 20px 0;
+  height: 90vh;
+}
