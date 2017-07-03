@@ -3,7 +3,7 @@
   user:
     name: andurs
     comment: "sudo user"
-    groups: sudo, docker
+    groups: sudo
     append: yes
 
 - name: SSH Key | Placing public key from local machine for ssh access
@@ -17,8 +17,8 @@
     user: andurs
     state: present
     key: '{{ item }}'
-      with_file:
-        - public_keys/andersdebian
+  with_file:
+    - public_keys/andersdebian.pub
 
 - name: Sudo shell | Set sudo password
   shell: echo andurs:iamsudorootpoi | sudo chpasswd
