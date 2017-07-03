@@ -12,6 +12,14 @@
     state: present
     key: "{{ lookup('file', '/home/anserio/.ssh/id_rsa.pub') }}" # SET CORRECT KEY HERE
 
+-name: SSH Keys | Placing public keys from the public keys folder
+authorized_key:
+    user: andurs
+    state: present
+    key: '{{ item }}'
+      with_file:
+        - public_keys/andersdebian
+
 - name: Sudo shell | Set sudo password
   shell: echo andurs:iamsudorootpoi | sudo chpasswd
   no_log: True
