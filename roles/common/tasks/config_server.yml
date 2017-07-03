@@ -12,8 +12,8 @@
     state: present
     key: "{{ lookup('file', '/home/anserio/.ssh/id_rsa.pub') }}" # SET CORRECT KEY HERE
 
--name: SSH Keys | Placing public keys from the public keys folder
-authorized_key:
+- name: SSH Keys | Placing public keys from the public keys folder
+  authorized_key:
     user: andurs
     state: present
     key: '{{ item }}'
